@@ -24,7 +24,7 @@
                   <input v-model="user.password" class="form-control form-control-lg" type="password" placeholder="Password">
                 </fieldset>
                 <button class="btn btn-lg btn-primary pull-xs-right">
-                  Update Settings
+                  更新资料
                 </button>
             </fieldset>
           </form>
@@ -46,7 +46,7 @@ import { updateInfo } from '@/api/user'
 // 仅在客户端加载 js-cookie 包
 const Cookie = process.client ? require('js-cookie') : undefined
 export default {
-  middleware: 'authenticated',
+  middleware: 'authenticated',  // 中间件，没登录跳不进去
   name: 'SettingsIndex',
   data() {
     return {
