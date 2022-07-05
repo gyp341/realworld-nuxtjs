@@ -12,6 +12,9 @@ export const state = () => {
 export const mutations = {
   setUser (state, data) {
     state.user = data
+  },
+  removeUser(state, data){
+    state.user = null
   }
 }
 

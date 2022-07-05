@@ -61,8 +61,8 @@ export default {
     return {
       user: {
         username: '',
-        email: 'lpzmail@163.com',
-        password: '12345678'
+        email: '',  // lpzmail@163.com
+        password: ''   // 12345678
       },
       errors: {} // 错误信息
     }
@@ -85,6 +85,7 @@ export default {
         this.$store.commit('setUser', data.user)
 
         // 为了防止刷新页面数据丢失，我们需要把数据持久化
+        // 希望客户端和服务器端都能获得信息，因此存放到cookie
         Cookie.set('user', data.user)
 
         // 跳转到首页
