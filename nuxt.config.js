@@ -42,7 +42,7 @@ module.exports = {
               component: resolve(__dirname, 'pages/settings/')
             },
             {
-              path: '/editor',
+              path: '/editor/:slug?',  // 可选路由。方便结合创建和修改
               name: 'editor',
               component: resolve(__dirname, 'pages/editor/')
             },

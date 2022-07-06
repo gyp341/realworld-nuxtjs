@@ -1,5 +1,31 @@
 import { request } from '@/plugins/request'
 
+// 发送文章
+export const postArticles = params => {
+  return request({
+    method: 'POST',
+    url: '/api/articles',
+    data: params
+  })
+}
+
+// 编辑文章
+export const updateArticles = (params) => {
+  return request({
+    method: 'PUT',
+    url: '/api/articles/'+params.article.slug,
+    data: params
+  })
+}
+
+// 删除文章
+export const deleteArticles = (slug) => {
+  return request({
+    method: 'DELETE',
+    url: '/api/articles/'+slug,
+  })
+}
+
 // 获取公共文章列表
 export const getArticles = params => {
   return request({

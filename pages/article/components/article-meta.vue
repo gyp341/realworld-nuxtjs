@@ -19,37 +19,55 @@
       </nuxt-link>
       <span class="date">{{ article.createdAt | date('MMM DD, YYYY') }}</span>
     </div>
+      <!-- :class="{
+        active: article.author.following
+      }" -->
     <button
       class="btn btn-sm btn-outline-secondary"
-      :class="{
-        active: article.author.following
-      }"
+      @click="editArticle"
     >
-      <i class="ion-plus-round"></i>
+      <i class="ion-edit"></i>
       &nbsp;
-      Follow Eric Simons <span class="counter">(10)</span>
+      编辑文章
     </button>
     &nbsp;&nbsp;
+      <!-- :class="{
+        active: article.favorited
+      }" -->
     <button
       class="btn btn-sm btn-outline-primary"
-      :class="{
-        active: article.favorited
-      }"
+      @click="delArticle"
     >
-      <i class="ion-heart"></i>
+      <i class="ion-trash-a"></i>
       &nbsp;
-      Favorite Post <span class="counter">(29)</span>
+      删除文章
     </button>
   </div>
 </template>
 
 <script>
+import { deleteArticles } from '@/api/article'
 export default {
   name: 'ArticleMeta',
   props: {
     article: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    editArticle(){
+      this.$router.push({
+        name: 'editor',
+        params: {
+          slug: this.article.slug
+        }
+      })
+    },
+    async delArticle(){
+      const res = await deleteArticles(this.article.slug)
+      console.log(res);
+      this.$router.push('/')
     }
   }
 }
