@@ -6,6 +6,6 @@ const server = http.createServer((req, res) => {
     res.end('拉勾教育')
 })
 // 2.设置 web服务器 监听3000端口
-server.listen(3000, () => {
+server.listen(80, () => {
     console.log('服务器运行了')
 })
