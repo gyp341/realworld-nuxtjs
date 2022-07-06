@@ -5,10 +5,12 @@
 import axios from 'axios'
 
 // 创建请求对象
+console.log();
 export const request = axios.create({
   // baseURL: 'http://realworld.api.fed.lagounews.com'
-  // baseURL: 'https://conduit.productionready.io'  // 生产环境
-  baseURL: 'https://api.realworld.io'  // 开发环境调试
+  // 动态判断开发or生产环境
+  baseURL: process.env.NODE_ENV === 'development' ? 'https://api.realworld.io' : 'https://conduit.productionready.io'
+  // baseURL: 'https://api.realworld.io'  // 开发环境调试
 })
 
 // 通过插件机制获取到上下文对象context（query、params、req、res、app、store...）
